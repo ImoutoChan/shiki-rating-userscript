@@ -54,6 +54,9 @@ var func = function() {
         }
         $("#shiki-score > div.stars-container > div.stars.score").attr('style', 'color: #456 !important;');
         $("#shiki-score > div.stars-container > div.stars.score").addClass("score-" + Math.round(shikiScore));
+        
+        var labelData = JSON.parse($(".b-rate.rateable").attr('data-notices'));
+        $("#shiki-score > div.text-score > div.score-notice").text(labelData[Math.round(shikiScore)]);
     }
 };
 
