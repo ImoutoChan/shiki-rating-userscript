@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      1.0.0
+// @version      1.1.0
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
