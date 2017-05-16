@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      1.3.0
+// @version      1.4.0
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -56,6 +56,18 @@ var func = function() {
                 JSON.parse('{"0":"","1":"Worst Ever","2":"Terrible","3":"Very Bad","4":"Bad","5":"So-so","6":"Fine","7":"Good","8":"Excellent","9":"Great","10":"Masterpiece!"}');
 
         $("#shiki-score > div.text-score > div.score-notice").text(labelData[Math.round(shikiScore)]);
+        
+        $('.scores > .b-rate:eq(0)').append('<p class="score-counter"><strong>' + $("meta[itemprop=ratingCount]").attr("content") + '</strong></p>');
+        $('.scores > .b-rate:eq(1)').append('<p class="score-counter"><strong>' + totalCount + '</strong></p>');
+
+        $('.scores > .b-rate:eq(0)').attr('style', 'margin-bottom: 15px;');
+        $('.score-counter').attr('style', 'text-align: center; color: #7b8084;');
+
+        if ($('body').attr('data-locale') === 'ru') {
+            $('.score-counter').prepend('На основе ').append(' оценок.');
+        } else {
+            $('.score-counter').prepend('From ').append(' users.');
+        }
     }
 };
 
