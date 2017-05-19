@@ -13,7 +13,7 @@ var func = function() {
     'use strict';
 
     var urlpart = window.location.pathname.substring(0,7);
-    if (urlpart == "/animes" || urlpart == "/mangas")
+    if (urlpart == "/animes" || urlpart == "/mangas" || urlpart == "/ranobe")
     {
         if ($(".scores > .b-rate").length > 1)
         {
@@ -57,17 +57,22 @@ var func = function() {
 
         $("#shiki-score > div.text-score > div.score-notice").text(labelData[Math.round(shikiScore)]);
         
-        $('.scores > .b-rate:eq(0)').append('<p class="score-counter"><strong>' + $("meta[itemprop=ratingCount]").attr("content") + '</strong></p>');
+        if ($('body').attr('data-locale') === 'ru') {
+            $('.scores > .b-rate:eq(0)').append('<p class="score-source">На основе оценок mal</p>');
+        } else {
+            $('.scores > .b-rate:eq(0)').append('<p class="score-source">From MAL users</p>');
+        }
+
         $('.scores > .b-rate:eq(1)').append('<p class="score-counter"><strong>' + totalCount + '</strong></p>');
+        if ($('body').attr('data-locale') === 'ru') {
+            $('.score-counter').prepend('На основе ').append(' оценок shiki');
+        } else {
+            $('.score-counter').prepend('From ').append(' shiki users');
+        }
 
         $('.scores > .b-rate:eq(0)').attr('style', 'margin-bottom: 15px;');
         $('.score-counter').attr('style', 'text-align: center; color: #7b8084;');
-
-        if ($('body').attr('data-locale') === 'ru') {
-            $('.score-counter').prepend('На основе ').append(' оценок.');
-        } else {
-            $('.score-counter').prepend('From ').append(' users.');
-        }
+        $('.score-source').attr('style', 'text-align: center; color: #7b8084;');
     }
 };
 
