@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.1
+// @version      2.2
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -33,6 +33,21 @@ function needAddRating() {
 function removeLastClass(domElement) {
     var classes = domElement.classList;
     classes.remove(classes.item(classes.length - 1));
+}
+
+function setNoData(domElement) {
+    var noData = document.createElement('p');
+    noData.classList.add('b-nothing_here');
+    noData.innerText = getLocale() === 'ru'
+        ? `Недостаточно данных`
+        : `Insufficient data`;
+
+    domElement.innerHTML = '';
+    domElement.appendChild(noData);
+
+    domElement.style.textAlign = 'center';
+    domElement.style.color = '#7b8084';
+    domElement.style.marginTop = '15px';
 }
 
 function appendShikiRating() {
@@ -72,6 +87,12 @@ function appendShikiRating() {
     var scoreDataJson = document.querySelector("#rates_scores_stats").getAttribute("data-stats");
     var scoreData = JSON.parse(scoreDataJson);
     log(scoreDataJson);
+
+    // set no data lable
+    if (scoreData.length === 0) {
+        setNoData(newShikiRate);
+        return;
+    }
 
     // calculate shiki rating
     var sumScore = 0;
@@ -121,7 +142,7 @@ function appendShikiRating() {
     malScoreLabelElement.style.textAlign = 'center';
     malScoreLabelElement.style.color = '#7b8084';
 
-    // set shiki for mal description label
+    // set style for shiki description label
     var shikiScoreLabelElement = document.querySelector('.score-counter');
     shikiScoreLabelElement.style.textAlign = 'center';
     shikiScoreLabelElement.style.color = '#7b8084';
@@ -137,6 +158,4 @@ function ready(fn) {
     }
 }
 
-ready(function() {
-    appendShikiRating();
-});
+ready(appendShikiRating);
