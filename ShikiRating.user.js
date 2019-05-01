@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.2
+// @version      2.3
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -24,7 +24,7 @@ function getLocale() {
     return document.querySelector('body').getAttribute('data-locale');
 }
 
-function needAddRating() {
+function needAddRating(urlpart) {
     return urlpart === "/animes" ||
            urlpart === "/mangas" ||
            urlpart === "/ranobe";
@@ -56,7 +56,7 @@ function appendShikiRating() {
     var urlpart = window.location.pathname.substring(0,7);
     log(urlpart);
 
-    if (!needAddRating) {
+    if (!needAddRating(urlpart)) {
         log('wrong page');
         return;
     }
@@ -150,6 +150,7 @@ function appendShikiRating() {
 
 function ready(fn) {
     document.addEventListener('page:load', fn);
+    document.addEventListener('turbolinks:load', fn);
 
     if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
         fn();
