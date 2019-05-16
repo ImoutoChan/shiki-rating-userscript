@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.3
+// @version      2.4
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
 // @match        https://shikimori.org/*
+// @match        http://shikimori.one/*
+// @match        https://shikimori.one/*
 // @license      MIT
 // @grant        none
 // ==/UserScript==
