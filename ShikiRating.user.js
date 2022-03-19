@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.5
+// @version      2.6
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -101,7 +101,7 @@ function appendShikiRating() {
     var totalCount = 0;
     for (var i = 0; i < scoreData.length; i++) {
         sumScore += scoreData[i].value * scoreData[i].key;
-        totalCount += scoreData[i].value;
+        totalCount += scoreData[i].value * 1;
     }
     var shikiScore = sumScore / totalCount;
     var shikiScoreDigit = Math.round(shikiScore);
