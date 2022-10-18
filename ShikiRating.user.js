@@ -100,8 +100,8 @@ function appendShikiRating() {
     var sumScore = 0;
     var totalCount = 0;
     for (var i = 0; i < scoreData.length; i++) {
-        sumScore += scoreData[i].value * scoreData[i].key;
-        totalCount += scoreData[i].value * 1;
+        sumScore += scoreData[i][1] * scoreData[i][0];
+        totalCount += scoreData[i][1] * 1;
     }
     var shikiScore = sumScore / totalCount;
     var shikiScoreDigit = Math.round(shikiScore);
