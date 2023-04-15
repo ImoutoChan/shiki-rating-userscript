@@ -21,7 +21,6 @@ function log(message) {
     if (!debug) {
         return;
     }
-
     console.log('ShikiRating: ' + message);
 }
 
