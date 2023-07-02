@@ -94,7 +94,7 @@ function appendShikiRating() {
     log(scoreDataJson);
 
     // set no data lable
-    if (scoreData.length === 0) {
+    if (scoreData === null || scoreData.length === 0) {
         setNoData(newShikiRate);
         return;
     }
