@@ -10,6 +10,7 @@
 // @match        https://shikimori.one/*
 // @match        http://shikimori.me/*
 // @match        https://shikimori.me/*
+// @match        https://shiki.one/*
 // @downloadURL  https://github.com/ImoutoChan/shiki-rating-userscript/raw/master/ShikiRating.user.js
 // @updateURL    https://github.com/ImoutoChan/shiki-rating-userscript/raw/master/ShikiRating.user.js
 // @license      MIT
