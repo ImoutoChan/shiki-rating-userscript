@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.9.0
+// @version      2.9.1
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -11,6 +11,7 @@
 // @match        http://shikimori.me/*
 // @match        https://shikimori.me/*
 // @match        https://shiki.one/*
+// @match        https://shikimori.io/*
 // @downloadURL  https://github.com/ImoutoChan/shiki-rating-userscript/raw/master/ShikiRating.user.js
 // @updateURL    https://github.com/ImoutoChan/shiki-rating-userscript/raw/master/ShikiRating.user.js
 // @license      MIT
