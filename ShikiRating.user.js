@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shiki Rating
 // @namespace    http://shikimori.org/
-// @version      2.9.1
+// @version      2.10.1
 // @description  Rating from shiki users
 // @author       ImoutoChan
 // @match        http://shikimori.org/*
@@ -133,7 +133,7 @@ function appendShikiRating() {
     newShikiRate.querySelector("div.text-score > div.score-notice").textContent = labelData[shikiScoreDigit];
 
     // set mal description label
-    var malLabel = getLocale() === 'ru' ? 'На основе оценок mal' : 'From MAL users';
+    var malLabel = getLocale() === 'ru' ? 'Основной рейтинг шики' : 'Native shiki rating';
     malRate.insertAdjacentHTML('afterend', '<p class="score-source">' + malLabel + '</p>');
 
     // set shiki description label
@@ -153,6 +153,11 @@ function appendShikiRating() {
     var shikiScoreLabelElement = document.querySelector('.score-counter');
     shikiScoreLabelElement.style.textAlign = 'center';
     shikiScoreLabelElement.style.color = '#7b8084';
+    shikiScoreLabelElement.style.marginBottom = '10px';
+
+    var malContainer = document.querySelector(".scores > .b-mal_score");
+    rateContainer.removeChild(malContainer);
+    rateContainer.appendChild(malContainer);
 }
 
 function ready(fn) {
